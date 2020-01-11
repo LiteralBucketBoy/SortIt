@@ -1,0 +1,72 @@
+CM Fase 2
+(sponsored by Lu Ban aka People's Republic of China)
+Processo escolhido: Processo 2(Estado 5)
+
+Nome da App: "SortIt"
+
+Equipa: Adriana Oliveira;
+		André Ribeiro;
+		Daniel Afonso.
+
+Requisitos Principais:
+• Visualização do progresso do processo (através de animação ou esquema) ;
+• Visualização de ações realizadas nos componentes da interface de comando do processo ;
+• Visualização de estatísticas.
+
+Materiais do processo:
+- Containers(preto, branco e prata) que levam discos por dentro;
+
+- 1 conveyor belt:
+	–S1 ou SI: se existe uma peça presente no tapete na posição inicial: bit a 1, caso contrário: bit a 0;
+	–S2 ou SM: se a peça é de metal: bit a 1, caso contrário: bit a 0;
+	–S3: se a peça é branca: bit a 1, caso contrário: bit a 0;
+	• Existe um outro sensor (analógico) que indica o valor da posição no tapete (valor do número de rotações do motor, de 0 a 300).
+	• Para simplificar a simulação considera-se que a velocidade do tapete é constante e pode ser calculada sabendo-se o momento no tempo em que
+	a peça é detetada na posição inicial e o momento no tempo em que o cilindro respetivo é atuado, isto é, não é preciso usar este sensor. 
+	• Se os alunos pretenderem assumir valores para a posição no tapete poderão usar o seguintes valores (ou podem usar outros que considerem mais adequados):
+		– 0: posição inicial 
+		– 80: posição do sensor S3 
+		– 100: posição do cilindro A 
+		– 150: posição do cilindro B 
+		– 200: posição do cilindro C 
+		– 300: fim do tapete 
+	• Caso os alunos pretendam simular este sensor, terão de alterar as frases da informação de teste para espelhar a informação da posição (que não é um bit). 
+	Neste caso em vez de terem 6 sensores terão 7 sensores e na frase, na posição do S8, colocarão um valor entre 0 e 300 para a posição no tapete, 
+	num dado momento no tempo.
+	
+- 3 Cilindros que puxam os containers para a sua respetiva calha:
+	–S4 ou SA: deteta se a peça foi arrumada (avanço) com sucesso pelo cilindro A e este voltou à posição original (recuo): bit a 1, caso contrário: bit a 0;
+	–S5 ou SB: deteta se a peça foi arrumada (avanço) com sucesso pelo cilindro B e este voltou à posição original (recuo): bit a 1, caso contrário: bit a 0;
+	–S6 ou SC: deteta se a peça foi arrumada (avanço) com sucesso pelo cilindro C e este voltou à posição original (recuo): bit a 1, caso contrário: bit a 0;
+	• Em relação aos sensores S4, S5 e S6: os cilindros A, B e C possuem dois movimentos distintos: avanço e recuo. 
+	Na realidade, existem dois sensores para cada cilindro (tal como para os cilindros A e B do Processo 1 – Estação 2),
+	que detetam o fim de curso de recuo (a0, b0 e c0, respetivamente) e o fim de curso de avanço (a1, b1 e c1 , respetivamente) de cada cilindro. 
+	Por uma questão de simplificação, assume-se que o avanço e recuo são apenas um movimento e que 
+	a informação adquirida é de sucesso (ou insucesso) do movimento de avanço+recuo como um todo. 
+	• Caso os alunos estejam a simular os sensores em separado (a0+a1, b0+b1 e c0+c1), 
+	terão de alterar as frases da informação de teste para espelhar este desdobramento.
+	Neste caso em vez de terem 6 sensores terão 9 sensores. 
+	Formato da nova frase: <S1,S2,S3,S4,S5,S6,S7,S8,S9,C1,C2,C3,C4,C5,C6,C7,C8,AAAA-MM-DD HH:MM:SS.sss>
+	Em vez dos sensores S4 (SA), S5 (SB) e S6 (SC) definidos anteriormente, tem-se: 
+	• S4: a0 e S5: a1 
+	• S6: b0 e S7: b1 
+	• S8: c0 e S9: c1
+	
+- 4 interfaces:
+	- Automato;
+	- Cablagem;
+	- Fonte de Alimentação;
+	- Comando: 
+		• Três sinópticos Laranja, Verde e Vermelho, usados para sinalizar diversos estados do automatismo;
+		• Duas botoneiras de pressão, Start e Stop, com contacto normalmente aberto (NO), 
+		usadas para dar ordem de execução (Start) e paragem (Stop) ao automatismo;
+		• Um seletor de duas posições, designado por Select, que permite colocar o automatismo no modo Seleção ou no modo Execução;
+		• Um botão de Emergência vermelho, com contacto normalmente fechado, que permite interromper em qualquer instante o processamento do automatismo. 
+		– C1 (HL1): Estado Laranja (ligado: bit a 1, desligado: bit a 0) 
+		– C2 (HL2): Estado Verde (ligado: bit a 1, desligado: bit a 0)
+		– C3 (HL3): Estado Vermelho (ligado: bit a 1, desligado: bit a 0) 
+		– C4 (SB1): Ordem de Execução Start (quando pressionado: bit a 1, caso contrário bit a 0) 
+		– C5 (SB2): Ordem de Execução Stop (quando pressionado: bit a 1, caso contrário bit a 0) 
+		– C6 (SA): Modo de Seleção (bit a 0) ou Modo de Execução (bit a 1) – C7 (QS): Emergência (quando pressionado: bit a 1, caso contrário bit a 0) 
+		– C8: Componente não existente com bit sempre a 0
+- 
