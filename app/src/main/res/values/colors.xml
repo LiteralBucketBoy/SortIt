@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">#00AA00</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="HL1_off">#FFDD00</color>
+    <color name="HL1_on">#FFFF00</color>
+    <color name="HL2_off">#00AF00</color>
+    <color name="HL2_on">#00FF00</color>
+    <color name="HL3_off">#AF0000</color>
+    <color name="HL3_on">#FF0000</color>
+    <color name="SB1_off">#003F00</color>
+    <color name="SB1_on">#00AF00</color>
+    <color name="SB2_off">#3F0000</color>
+    <color name="SB2_on">#AF0000</color>
+
 </resources>

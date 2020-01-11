@@ -1,16 +1,16 @@
-package com.example.sortit.ui.home;
+package com.example.sortit.ui.CommandInterface;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class CommandViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public CommandViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("This is tools fragment");
     }
 
     public LiveData<String> getText() {

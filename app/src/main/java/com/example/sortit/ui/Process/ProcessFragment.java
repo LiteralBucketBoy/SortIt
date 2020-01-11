@@ -1,4 +1,4 @@
-package com.example.sortit.ui.send;
+package com.example.sortit.ui.Process;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.sortit.R;
 
-public class SendFragment extends Fragment {
+public class ProcessFragment extends Fragment {
 
-    private SendViewModel sendViewModel;
+    private ProcessViewModel processViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        sendViewModel =
-                ViewModelProviders.of(this).get(SendViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_send, container, false);
-        final TextView textView = root.findViewById(R.id.text_send);
-        sendViewModel.getText().observe(this, new Observer<String>() {
+        processViewModel =
+                ViewModelProviders.of(this).get(ProcessViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_process, container, false);
+        final TextView textView = root.findViewById(R.id.text_process);
+        processViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
