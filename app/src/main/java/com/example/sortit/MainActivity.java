@@ -3,6 +3,7 @@ package com.example.sortit;
 import android.os.Bundle;
 
 import com.example.sortit.Communication.Requests;
+import com.example.sortit.Communication.StateBuilder;
 import com.example.sortit.commands.CommandManager;
 import com.example.sortit.sensors.SensorManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -40,6 +41,7 @@ import static java.lang.Thread.sleep;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    public static StateBuilder sb = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        askTuple();
         }
 
     @Override
@@ -75,14 +76,13 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    public void askTuple() {
+    public static void askTuple() {
         final Handler handler = new Handler();
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 Requests req = new Requests();
-                //set the testdatareader here
-                System.out.println(req.getTuple());
+                sb = new StateBuilder(req.getTuple());
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
