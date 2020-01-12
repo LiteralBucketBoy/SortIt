@@ -16,6 +16,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.sortit.Communication.StateBuilder;
+import com.example.sortit.MainActivity;
 import com.example.sortit.R;
 import com.example.sortit.TestDataReader;
 
@@ -48,7 +50,22 @@ public class CommandFragment extends Fragment {
         images.add(hl1);
         Switch sa = root.findViewById(R.id.c6_button);
         reader.initialize(hl1,hl2,hl3,buttons,sa);
-        reader.runEventLine(true,false,true,false,false,false,false,true,false,false,false,true,false);
+
+        //ask tuple
+        MainActivity.askTuple();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //get statebuilder and represent
+        StateBuilder sb = MainActivity.sb;
+        ArrayList<Boolean> listState = sb.getList();
+        reader.runEventLine(listState.get(0), listState.get(1), listState.get(2), listState.get(3),
+                listState.get(4), listState.get(5), listState.get(6), listState.get(9),
+                listState.get(10), listState.get(11), listState.get(12), listState.get(13),
+                listState.get(14));
+        System.out.println(sb);
 
         return root;
     }
