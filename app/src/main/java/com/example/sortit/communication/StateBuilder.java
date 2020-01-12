@@ -1,4 +1,4 @@
-package com.example.sortit.Communication;
+package com.example.sortit.communication;
 
 import java.util.ArrayList;
 

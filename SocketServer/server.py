@@ -23,21 +23,19 @@ def send_client_tuples(svr_socket):
     # Wait for client connections
     client_connection, client_address = svr_socket.accept()
     print("CLIENT IS IN")
-    while True:
-        accept = client_connection.recv(1024).decode()
-        print(accept)
-        if len(stack) > 0:
-            line = stack.pop(0)
-            reverse_stack.append(line)
-        else:
-            line = reverse_stack.pop(0)
-            stack.append(line)
+    accept = client_connection.recv(1024).decode()
+    print(accept)
+    if len(stack) > 0:
+        line = stack.pop(0)
+        reverse_stack.append(line)
+    else:
+        line = reverse_stack.pop(0)
+        stack.append(line)
 
-        print(line)
-        client_connection.sendall(",".join(line).encode())
-        print("closed connection")
-        client_connection.close()
-        break
+    print(line)
+    client_connection.sendall(",".join(line).encode())
+    print("closed connection")
+    client_connection.close()
 
 
 # Define socket host and port

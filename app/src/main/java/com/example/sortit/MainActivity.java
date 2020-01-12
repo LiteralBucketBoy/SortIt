@@ -2,17 +2,11 @@ package com.example.sortit;
 
 import android.os.Bundle;
 
-import com.example.sortit.Communication.Requests;
-import com.example.sortit.Communication.StateBuilder;
-import com.example.sortit.commands.CommandManager;
-import com.example.sortit.sensors.SensorManager;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.sortit.communication.Requests;
+import com.example.sortit.communication.StateBuilder;
 
-import android.os.Debug;
 import android.os.Handler;
-import android.util.Log;
-import android.view.View;
+import android.os.Looper;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -27,14 +21,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Switch;
-
-import java.io.Console;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static java.lang.Thread.sleep;
 
@@ -81,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
+                Looper.prepare();
                 Requests req = new Requests();
                 sb = new StateBuilder(req.getTuple());
                 handler.post(new Runnable() {

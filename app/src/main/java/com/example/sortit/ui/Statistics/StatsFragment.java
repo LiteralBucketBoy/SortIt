@@ -12,7 +12,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.sortit.Piece;
 import com.example.sortit.R;
+import com.example.sortit.stats.Statistics;
+
+import java.util.ArrayList;
 
 public class StatsFragment extends Fragment {
 
@@ -30,6 +34,15 @@ public class StatsFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+        //get stats
+        Statistics stats = Statistics.getInstance();
+        ArrayList<Piece> pieces = stats.getPieces();
+        int counter = 0;
+        for (Piece p : pieces) {
+            System.out.println(counter++ + " " + p.isMetallic() + " " + p.isBlack());
+        }
+
         return root;
     }
 }
