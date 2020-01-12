@@ -2,12 +2,14 @@ package com.example.sortit;
 
 import android.os.Bundle;
 
+import com.example.sortit.Communication.Requests;
 import com.example.sortit.commands.CommandManager;
 import com.example.sortit.sensors.SensorManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import android.os.Debug;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
@@ -29,15 +31,15 @@ import android.widget.ImageView;
 import android.widget.Switch;
 
 import java.io.Console;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.lang.Thread.sleep;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
+        askTuple();
         }
 
     @Override
@@ -71,5 +73,24 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void askTuple() {
+        final Handler handler = new Handler();
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Requests req = new Requests();
+                //set the testdatareader here
+                System.out.println(req.getTuple());
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                });
+            }
+        });
+        thread.start();
     }
 }
