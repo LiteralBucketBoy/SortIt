@@ -30,7 +30,7 @@ public class CommandFragment extends Fragment {
     private CommandViewModel commandViewModel;
     private TestDataReader reader = new TestDataReader();
     private Button btnStart;
-    private Thread thread;
+    private Thread thread = new Thread();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -100,6 +100,9 @@ public class CommandFragment extends Fragment {
     }
 
     private void startReading() {
+        if (thread.isAlive()) {
+            return;
+        }
         thread = new Thread(new Runnable() {
             @Override
             public void run() {
