@@ -27,14 +27,6 @@ public class StatsFragment extends Fragment {
         statsViewModel =
                 ViewModelProviders.of(this).get(StatsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_stats, container, false);
-        final TextView textView = root.findViewById(R.id.text_stats);
-        statsViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-
         //get stats
         Statistics stats = Statistics.getInstance();
         ArrayList<Piece> pieces = stats.getPieces();
@@ -49,6 +41,7 @@ public class StatsFragment extends Fragment {
         TextView avgMetal = root.findViewById(R.id.avgMetallic);
         TextView avgBlack = root.findViewById(R.id.avgBlack);
         TextView avgWhite = root.findViewById(R.id.avgWhite);
+        TextView totalDistance = root.findViewById(R.id.totalDistance);
 
         totalMetal.setText("" + stats.getMetalPieces().size());
         totalBlack.setText("" + stats.getBlackPieces().size());
@@ -71,6 +64,9 @@ public class StatsFragment extends Fragment {
             avgWhiteNumber = (double) stats.getWhitePieces().size() / stats.getPieces().size();
         }
         avgWhite.setText("" + avgWhiteNumber);
+
+        int distance = stats.getTotalDistance();
+        totalDistance.setText(""+ distance);
 
         return root;
     }

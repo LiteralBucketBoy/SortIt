@@ -57,6 +57,14 @@ public class Statistics implements Observer {
         return metal;
     }
 
+    public int getTotalDistance() {
+        int total = 0;
+        for (Piece p : pieces) {
+            total += p.getPosition();
+        }
+        return total;
+    }
+
     @Override
     public void update(Observable observable, Object o) {
         TestDataReader obj = (TestDataReader) observable;
