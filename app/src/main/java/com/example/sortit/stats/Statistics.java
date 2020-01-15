@@ -27,6 +27,36 @@ public class Statistics implements Observer {
         return pieces;
     }
 
+    public ArrayList<Piece> getBlackPieces() {
+        ArrayList<Piece> blacks = new ArrayList<>();
+        for (Piece p : pieces) {
+            if(p.isBlack()) {
+                blacks.add(p);
+            }
+        }
+        return blacks;
+    }
+
+    public ArrayList<Piece> getWhitePieces() {
+        ArrayList<Piece> whites = new ArrayList<>();
+        for (Piece p : pieces) {
+            if(!p.isBlack()) {
+                whites.add(p);
+            }
+        }
+        return whites;
+    }
+
+    public ArrayList<Piece> getMetalPieces() {
+        ArrayList<Piece> metal = new ArrayList<>();
+        for (Piece p : pieces) {
+            if(p.isMetallic()) {
+                metal.add(p);
+            }
+        }
+        return metal;
+    }
+
     @Override
     public void update(Observable observable, Object o) {
         TestDataReader obj = (TestDataReader) observable;

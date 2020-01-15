@@ -64,10 +64,10 @@ public class TestDataReader extends Observable {
             sensorManager.getSensores().get(1).setInactive();
         }
         if(s3){
-            int index = 0;
+            int index = nPiecesOnTray - 1;
             Piece p = pieces.get(index);
-            while(p.isCheckedColor() && index < nPiecesOnTray) {
-                p = pieces.get(index++);
+            while(p.isCheckedColor() && index > 0) {
+                p = pieces.get(--index);
             }
             p.setCheckedColor(true);
             p.setBlack(false);

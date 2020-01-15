@@ -43,6 +43,35 @@ public class StatsFragment extends Fragment {
             System.out.println(counter++ + " " + p.isMetallic() + " " + p.isBlack());
         }
 
+        TextView totalMetal = root.findViewById(R.id.totalMetal);
+        TextView totalBlack = root.findViewById(R.id.totalBlack);
+        TextView totalWhite = root.findViewById(R.id.totalWhite);
+        TextView avgMetal = root.findViewById(R.id.avgMetallic);
+        TextView avgBlack = root.findViewById(R.id.avgBlack);
+        TextView avgWhite = root.findViewById(R.id.avgWhite);
+
+        totalMetal.setText("" + stats.getMetalPieces().size());
+        totalBlack.setText("" + stats.getBlackPieces().size());
+        totalWhite.setText("" + stats.getWhitePieces().size());
+
+        double avgMetalNumber = 0;
+        if (stats.getPieces().size() > 0) {
+            avgMetalNumber = (double) stats.getMetalPieces().size() / stats.getPieces().size();
+        }
+        avgMetal.setText("" + avgMetalNumber);
+
+        double avgBlackNumber = 0;
+        if (stats.getPieces().size() > 0) {
+            avgBlackNumber = (double) stats.getBlackPieces().size() / stats.getPieces().size();
+        }
+        avgBlack.setText("" + avgBlackNumber);
+
+        double avgWhiteNumber = 0;
+        if (stats.getPieces().size() > 0) {
+            avgWhiteNumber = (double) stats.getWhitePieces().size() / stats.getPieces().size();
+        }
+        avgWhite.setText("" + avgWhiteNumber);
+
         return root;
     }
 }
