@@ -1,4 +1,4 @@
-package com.example.sortit.Communication;
+package com.example.sortit.communication;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ public class Requests {
     public Requests() {
         client = new Client();
         try {
-            client.startConnection("192.168.1.72", 8000);
+            client.startConnection("192.168.56.1", 8000);
         } catch (IOException e) {
             e.printStackTrace();
         }

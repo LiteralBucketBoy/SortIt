@@ -2,18 +2,40 @@ package com.example.sortit;
 
 public class Piece {
     private boolean isBlack;
-    private boolean isWhite;
     private boolean isMetallic;
-    private String colour;
-    private int position = 0;//(0,300) 0 = valor inicial, incase we want to use positioning
+    private int position = 0;//(0,300) 0 = initial value, in case we want to use positioning
+    private boolean checkedMetallic;
+    private boolean checkedColor;
 
+    public Piece () {
+        isBlack = true; //default value
+        isMetallic = false;
+        checkedMetallic = false;
+        checkedColor = false;
+    }
+
+    public void setCheckedMetallic(boolean checkedMetallic) {
+        this.checkedMetallic = checkedMetallic;
+    }
+
+    public void setCheckedColor(boolean checkedColor) {
+        this.checkedColor = checkedColor;
+    }
+
+    public boolean isCheckedMetallic() {
+        return checkedMetallic;
+    }
+
+    public boolean isCheckedColor() {
+        return checkedColor;
+    }
 
     public boolean isBlack() {
         return isBlack;
     }
 
     public boolean isWhite() {
-        return isWhite;
+        return !isBlack();
     }
 
     public boolean isMetallic() {
@@ -24,29 +46,8 @@ public class Piece {
         isBlack = black;
     }
 
-    public void setWhite(boolean white) {
-        isWhite = white;
-    }
-
     public void setMetallic(boolean metallic) {
         isMetallic = metallic;
-    }
-
-    public String getColour() {
-        return colour;
-    }
-
-    public void setColour(String colour) {
-        this.colour = colour;
-        if(colour.equals("White")){
-            setWhite(true);
-        }
-        if(colour.equals("Black")){
-            setBlack(true);
-        }
-        if(colour.equals("Metallic")){
-            setMetallic(true);
-        }
     }
 
     public int getPosition() {
